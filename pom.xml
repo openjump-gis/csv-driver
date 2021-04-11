@@ -49,13 +49,4 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <!-- useful for org.everit.json.schema-->
-        <repository>
-            <name>Redhat EA Repository</name>
-            <id>jboss-earlyaccess-repository</id>
-            <url>https://maven.repository.redhat.com/earlyaccess/all/</url>
-        </repository>
-    </repositories>
-
 </project>
