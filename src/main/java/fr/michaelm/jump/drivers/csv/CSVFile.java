@@ -25,6 +25,7 @@ import com.vividsolutions.jump.feature.Feature;
 import com.vividsolutions.jump.feature.FeatureSchema;
 import com.vividsolutions.jump.io.CompressedFile;
 import com.vividsolutions.jump.util.FlexibleDateParser;
+
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.GeometryFactory;
@@ -47,7 +48,7 @@ import static fr.michaelm.jump.drivers.csv.FieldSeparator.COMMA;
  * A generic class used to read CSV files containing geographic data.
  * This class can be extended by specialized classes dedicated to specific
  * formats.
- * @author Micha&euml;l MICHAUD
+ * @author Michaël Michaud
  * @version 0.9 (2014-05-14)
  */
 // 0.9 updates to manage compressed files
@@ -540,7 +541,8 @@ public class CSVFile {
     
 
     /** Get the Geometry from an array of String, using the geometryColumns attribute of this CSVFile.*/
-    private Geometry getGeometry(String[] fields) throws NumberFormatException, ArrayIndexOutOfBoundsException, ParseException {
+    private Geometry getGeometry(String[] fields)
+        throws NumberFormatException, ArrayIndexOutOfBoundsException, ParseException {
         if (geometryColumns.length == 1) {
             if (fields.length <= geometryColumns[0])
                 throw new IndexOutOfBoundsException("Field " + geometryColumns[0] + " is needed for geometry but "
@@ -605,13 +607,15 @@ public class CSVFile {
     
     
     private String getType(AttributeType type) {
-        if (type.equals(AttributeType.STRING)) return "STRING";
+        if (type == null) return "";
+        else if (type.equals(AttributeType.STRING)) return "STRING";
         else if (type.equals(AttributeType.INTEGER)) return "INTEGER";
         else if (type.equals(AttributeType.LONG)) return "LONG";
         else if (type.equals(AttributeType.DOUBLE)) return "DOUBLE";
         else if (type.equals(AttributeType.DATE)) return "DATE";
         else if (type.equals(AttributeType.BOOLEAN)) return "BOOLEAN";
         else if (type.equals(AttributeType.GEOMETRY)) return "GEOMETRY";
+        else if (type.equals(AttributeType.OBJECT)) return "OBJECT";
         else return "STRING";
     }
 

@@ -36,7 +36,7 @@ import static fr.michaelm.jump.drivers.csv.FieldSeparator.*;
 
 /**
  * SaveFileDataSourceQueryChooser for text formats
- * @author Micha&euml;l Michaud
+ * @author Michaël Michaud
  * @version 1.0 (2014-06-16)
  */
 

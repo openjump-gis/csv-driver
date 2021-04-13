@@ -37,7 +37,7 @@ import static fr.michaelm.jump.drivers.csv.FieldSeparator.*;
 /**
  * An extension of CSVFile with methods to guess the internal structure of the
  * file to parse.
- * @author Micha&euml;l MICHAUD
+ * @author Michaël Michaud
  */
 public class AutoCSVFile extends CSVFile {
 

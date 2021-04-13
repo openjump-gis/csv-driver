@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
 
 /**
  * Field separator of a CSV File
- * @author Micha&euml;l MICHAUD
+ * @author Michaël Michaud
  * @version 0.6 (2012-03-25)
  */
 public class FieldSeparator {

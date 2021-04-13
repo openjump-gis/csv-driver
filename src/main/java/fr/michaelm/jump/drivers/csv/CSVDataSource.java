@@ -43,7 +43,7 @@ import com.vividsolutions.jump.workbench.Logger;
  * A file containing geographic information in a character delimited format
  * (csv like).</p>
  * Replace the previous XYZDataSource
- * @author Micha&euml;l MICHAUD
+ * @author Michaël Michaud
  */
 // 0.6   complete rewrite of the txt driver, becoming the csv driver
 //       XYZDatSource driver (replaced by CSVDataSource)

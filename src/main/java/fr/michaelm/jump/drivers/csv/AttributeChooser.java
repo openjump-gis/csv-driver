@@ -35,7 +35,7 @@ import javax.swing.JScrollPane;
 /**
  * Class creating a chooser from a FeatureSchema to select attributes to be 
  * exported to the CSVFile.
- * @author Micha&euml;l MICHAUD
+ * @author Michaël Michaud
  * @version 0.6 (2012-03-25)
  * @since 0.6
  */

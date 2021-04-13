@@ -42,7 +42,7 @@ import static fr.michaelm.jump.drivers.csv.FieldSeparator.*;
 
 /**
  * Extension loading a driver for csv and other character delimited text files
- * @author Micha&euml;l MICHAUD
+ * @author Michaël Michaud
  * @version 1.1.1 (2020-09-02)
  */
 // 1.1.1 (2020-09-02) fix error message and add txt as a possible extension for wkt driver
