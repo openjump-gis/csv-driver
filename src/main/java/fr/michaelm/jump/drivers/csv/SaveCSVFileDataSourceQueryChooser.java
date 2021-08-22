@@ -29,6 +29,7 @@ import java.nio.charset.Charset;
 import java.util.Map;
 import java.util.HashMap;
 
+import com.vividsolutions.jump.I18N;
 import com.vividsolutions.jump.workbench.datasource.SaveFileDataSourceQueryChooser;
 import com.vividsolutions.jump.workbench.WorkbenchContext;
 
@@ -42,6 +43,7 @@ import static fr.michaelm.jump.drivers.csv.FieldSeparator.*;
 
 public class SaveCSVFileDataSourceQueryChooser extends SaveFileDataSourceQueryChooser {
 
+    private final I18N i18n = I18N.getInstance("fr.michaelm.jump.drivers.csv");
     WorkbenchContext context;
 
     public SaveCSVFileDataSourceQueryChooser(Class clazz,
@@ -71,33 +73,34 @@ public class SaveCSVFileDataSourceQueryChooser extends SaveFileDataSourceQueryCh
 
         c.gridx = 0; c.gridy = 0;
         c.anchor = GridBagConstraints.LINE_END;
-        south.add(new JLabel(I18NPlug.getI18N("drivers.csv.field-separator")), c);
+        south.add(new JLabel(i18n.get("drivers.csv.field-separator")), c);
         c.gridx = 1; c.gridy = 0;
         c.anchor = GridBagConstraints.LINE_START;
         south.add(fieldSeparator, c);
 
         c.gridx = 0; c.gridy = 1;
         c.anchor = GridBagConstraints.LINE_END;
-        south.add(new JLabel(I18NPlug.getI18N("drivers.csv.encoding")), c);
+        south.add(new JLabel(i18n.get("drivers.csv.encoding")), c);
         c.gridx = 1; c.gridy = 1;
         c.anchor = GridBagConstraints.LINE_START;
         south.add(charsetChooser, c);
 
         c.gridx = 3; c.gridy = 0;
         c.anchor = GridBagConstraints.LINE_END;
-        south.add(new JLabel(I18NPlug.getI18N("drivers.csv.data-type-line")), c);
+        south.add(new JLabel(i18n.get("drivers.csv.data-type-line")), c);
         c.gridx = 4; c.gridy = 0;
         c.anchor = GridBagConstraints.LINE_START;
         south.add(dataTypes, c);
 
         c.gridx = 3; c.gridy = 1;
         c.anchor = GridBagConstraints.LINE_END;
-        south.add(new JLabel(I18NPlug.getI18N("drivers.csv.select-attributes")), c);
+        south.add(new JLabel(i18n.get("drivers.csv.select-attributes")), c);
         c.gridx = 4; c.gridy = 1;
         c.anchor = GridBagConstraints.LINE_START;
         south.add(selectAttributes, c);
 
-        south.setBorder(new TitledBorder(new LineBorder(Color.BLACK, 2), I18NPlug.getI18N("drivers.csv.options")));
+        south.setBorder(new TitledBorder(new LineBorder(Color.BLACK, 2),
+            i18n.get("drivers.csv.options")));
         return south;
     }
 

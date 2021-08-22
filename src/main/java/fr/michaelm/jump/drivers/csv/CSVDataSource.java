@@ -222,10 +222,10 @@ public class CSVDataSource extends DataSource {
                 public void close() {}
                 
                 public FeatureCollection executeQuery(String query, TaskMonitor monitor) throws Exception {
-                    ArrayList exceptions = new ArrayList();
+                    List<Exception> exceptions = new ArrayList<>();
                     FeatureCollection featureCollection = executeQuery(query, exceptions, monitor);
                     if (!exceptions.isEmpty()) {
-                        throw (Exception) exceptions.iterator().next();
+                        throw exceptions.iterator().next();
                     }
                     return featureCollection;
                 }

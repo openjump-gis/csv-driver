@@ -20,6 +20,7 @@
 
 package fr.michaelm.jump.drivers.csv;
 
+import com.vividsolutions.jump.I18N;
 import com.vividsolutions.jump.io.datasource.DataSource;
 import com.vividsolutions.jump.workbench.WorkbenchContext;
 import com.vividsolutions.jump.workbench.datasource.DataSourceQueryChooserManager;
@@ -45,6 +46,7 @@ import static fr.michaelm.jump.drivers.csv.FieldSeparator.*;
  * @author Michaël Michaud
  * @version 1.1.1 (2020-09-02)
  */
+// 2.0.0 (2021-08-22) upgrade i18n and align to OpenJUMP's version number
 // 1.1.1 (2020-09-02) fix error message and add txt as a possible extension for wkt driver
 // 1.1.0 (2020-08-09) add hu i18n file, wkt loader now accept files with csv extension, cleanup
 // 1.0.3 (2020-07-31) fix serialization of fieldSeparator in jmp file (need OJ r6363)
@@ -75,12 +77,14 @@ import static fr.michaelm.jump.drivers.csv.FieldSeparator.*;
 
 public class CSVDriverConfiguration extends Extension {
 
+    private final I18N i18n = I18N.getInstance("fr.michaelm.jump.drivers.csv");
+
     public String getName() {
         return "CSV Driver";
     }
 
     public String getVersion() {
-        return "1.1.1 (2020-09-02)";
+        return "2.0.0 (2021-08-22)";
     }
 
     public void configure(PlugInContext context) {
@@ -164,34 +168,34 @@ public class CSVDriverConfiguration extends Extension {
             // This is necessary to use persist CSVDataSource in the project file
             private Map<String,Object> toProperties(Map <String,Object> options) {
                 Map<String,Object> properties = new HashMap<>();
-                properties.put(CSVDataSource.CHARSET, options.get(I18NPlug.getI18N("drivers.csv.encoding")));
-                properties.put(CSVDataSource.COMMENT_LINE_PATTERN, options.get(I18NPlug.getI18N("drivers.csv.comment-line-pattern")));
-                properties.put(CSVDataSource.FIELD_SEPARATOR, options.get(I18NPlug.getI18N("drivers.csv.field-separator")));
-                properties.put(CSVDataSource.HEADER_LINE, options.get(I18NPlug.getI18N("drivers.csv.header-line")));
-                properties.put(CSVDataSource.DATA_TYPE_LINE, options.get(I18NPlug.getI18N("drivers.csv.data-type-line")));
-                properties.put(CSVDataSource.X_COLUMN, options.get(I18NPlug.getI18N("drivers.csv.x")));
-                properties.put(CSVDataSource.Y_COLUMN, options.get(I18NPlug.getI18N("drivers.csv.y")));
-                properties.put(CSVDataSource.Z_COLUMN, options.get(I18NPlug.getI18N("drivers.csv.z")));
-                properties.put(CSVDataSource.WKT_COLUMN, options.get(I18NPlug.getI18N("drivers.csv.wkt")));
+                properties.put(CSVDataSource.CHARSET, options.get(i18n.get("drivers.csv.encoding")));
+                properties.put(CSVDataSource.COMMENT_LINE_PATTERN, options.get(i18n.get("drivers.csv.comment-line-pattern")));
+                properties.put(CSVDataSource.FIELD_SEPARATOR, options.get(i18n.get("drivers.csv.field-separator")));
+                properties.put(CSVDataSource.HEADER_LINE, options.get(i18n.get("drivers.csv.header-line")));
+                properties.put(CSVDataSource.DATA_TYPE_LINE, options.get(i18n.get("drivers.csv.data-type-line")));
+                properties.put(CSVDataSource.X_COLUMN, options.get(i18n.get("drivers.csv.x")));
+                properties.put(CSVDataSource.Y_COLUMN, options.get(i18n.get("drivers.csv.y")));
+                properties.put(CSVDataSource.Z_COLUMN, options.get(i18n.get("drivers.csv.z")));
+                properties.put(CSVDataSource.WKT_COLUMN, options.get(i18n.get("drivers.csv.wkt")));
                 return properties;
             }
         };
  
-        csvOptionsFileLoader.addOption(I18NPlug.getI18N("drivers.csv.encoding"), 
+        csvOptionsFileLoader.addOption(i18n.get("drivers.csv.encoding"),
                 "CharsetChooser", Charset.defaultCharset(), true);
-        csvOptionsFileLoader.addOption(I18NPlug.getI18N("drivers.csv.comment-line-pattern"), 
+        csvOptionsFileLoader.addOption(i18n.get("drivers.csv.comment-line-pattern"),
                 "CommentLinePatternChooser", "^###COMMENT###$", true);
-        csvOptionsFileLoader.addOption(I18NPlug.getI18N("drivers.csv.field-separator"),
+        csvOptionsFileLoader.addOption(i18n.get("drivers.csv.field-separator"),
                 "FieldSeparatorChooser", "{tab}", true);
-        csvOptionsFileLoader.addOption(I18NPlug.getI18N("drivers.csv.header-line"), 
+        csvOptionsFileLoader.addOption(i18n.get("drivers.csv.header-line"),
                 "HeaderLineOption", Boolean.TRUE, true);
-        csvOptionsFileLoader.addOption(I18NPlug.getI18N("drivers.csv.data-type-line"),
+        csvOptionsFileLoader.addOption(i18n.get("drivers.csv.data-type-line"),
                 "DataTypeLineOption", Boolean.FALSE, true);
-        csvOptionsFileLoader.addOption(I18NPlug.getI18N("drivers.csv.x"), 
+        csvOptionsFileLoader.addOption(i18n.get("drivers.csv.x"),
                 "x column", "1", true);
-        csvOptionsFileLoader.addOption(I18NPlug.getI18N("drivers.csv.y"), 
+        csvOptionsFileLoader.addOption(i18n.get("drivers.csv.y"),
                 "y column", "2", true);
-        csvOptionsFileLoader.addOption(I18NPlug.getI18N("drivers.csv.z"), 
+        csvOptionsFileLoader.addOption(i18n.get("drivers.csv.z"),
                 "z column", "-", false);
         
         wcontext.getRegistry().createEntry(FileLayerLoader.KEY, csvOptionsFileLoader);
@@ -215,30 +219,30 @@ public class CSVDriverConfiguration extends Extension {
             // This is necessary to use persist CSVDataSource in the project file
             private Map<String,Object> toProperties(Map <String,Object> options) {
                 Map<String,Object> properties = new HashMap<>();
-                properties.put(CSVDataSource.CHARSET, options.get(I18NPlug.getI18N("drivers.csv.encoding")));
-                properties.put(CSVDataSource.COMMENT_LINE_PATTERN, options.get(I18NPlug.getI18N("drivers.csv.comment-line-pattern")));
-                properties.put(CSVDataSource.FIELD_SEPARATOR, options.get(I18NPlug.getI18N("drivers.csv.field-separator")));
-                properties.put(CSVDataSource.HEADER_LINE, options.get(I18NPlug.getI18N("drivers.csv.header-line")));
-                properties.put(CSVDataSource.DATA_TYPE_LINE, options.get(I18NPlug.getI18N("drivers.csv.data-type-line")));
-                properties.put(CSVDataSource.X_COLUMN, options.get(I18NPlug.getI18N("drivers.csv.x")));
-                properties.put(CSVDataSource.Y_COLUMN, options.get(I18NPlug.getI18N("drivers.csv.y")));
-                properties.put(CSVDataSource.Z_COLUMN, options.get(I18NPlug.getI18N("drivers.csv.z")));
-                properties.put(CSVDataSource.WKT_COLUMN, options.get(I18NPlug.getI18N("drivers.csv.wkt")));
+                properties.put(CSVDataSource.CHARSET, options.get(i18n.get("drivers.csv.encoding")));
+                properties.put(CSVDataSource.COMMENT_LINE_PATTERN, options.get(i18n.get("drivers.csv.comment-line-pattern")));
+                properties.put(CSVDataSource.FIELD_SEPARATOR, options.get(i18n.get("drivers.csv.field-separator")));
+                properties.put(CSVDataSource.HEADER_LINE, options.get(i18n.get("drivers.csv.header-line")));
+                properties.put(CSVDataSource.DATA_TYPE_LINE, options.get(i18n.get("drivers.csv.data-type-line")));
+                properties.put(CSVDataSource.X_COLUMN, options.get(i18n.get("drivers.csv.x")));
+                properties.put(CSVDataSource.Y_COLUMN, options.get(i18n.get("drivers.csv.y")));
+                properties.put(CSVDataSource.Z_COLUMN, options.get(i18n.get("drivers.csv.z")));
+                properties.put(CSVDataSource.WKT_COLUMN, options.get(i18n.get("drivers.csv.wkt")));
                 return properties;
             }
         };
  
-        wktOptionsFileLoader.addOption(I18NPlug.getI18N("drivers.csv.encoding"), 
+        wktOptionsFileLoader.addOption(i18n.get("drivers.csv.encoding"),
                 "CharsetChooser", Charset.defaultCharset(), true);
-        wktOptionsFileLoader.addOption(I18NPlug.getI18N("drivers.csv.comment-line-pattern"), 
+        wktOptionsFileLoader.addOption(i18n.get("drivers.csv.comment-line-pattern"),
                 "CommentLinePatternChooser", "^###COMMENT###$", true);
-        wktOptionsFileLoader.addOption(I18NPlug.getI18N("drivers.csv.field-separator"), 
+        wktOptionsFileLoader.addOption(i18n.get("drivers.csv.field-separator"),
                 "FieldSeparatorChooser", "{tab}", true);
-        wktOptionsFileLoader.addOption(I18NPlug.getI18N("drivers.csv.header-line"), 
+        wktOptionsFileLoader.addOption(i18n.get("drivers.csv.header-line"),
                 "HeaderLineOption", Boolean.TRUE, true);
-        wktOptionsFileLoader.addOption(I18NPlug.getI18N("drivers.csv.data-type-line"),
+        wktOptionsFileLoader.addOption(i18n.get("drivers.csv.data-type-line"),
                 "DataTypeLineOption", Boolean.FALSE, true);
-        wktOptionsFileLoader.addOption(I18NPlug.getI18N("drivers.csv.wkt"), 
+        wktOptionsFileLoader.addOption(i18n.get("drivers.csv.wkt"),
                 "wkt column", "1", true);
         
         wcontext.getRegistry().createEntry(FileLayerLoader.KEY, wktOptionsFileLoader);

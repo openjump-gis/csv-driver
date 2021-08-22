@@ -19,6 +19,7 @@
 
 package fr.michaelm.jump.drivers.csv;
 
+import com.vividsolutions.jump.I18N;
 import com.vividsolutions.jump.feature.AttributeType;
 import com.vividsolutions.jump.feature.FeatureSchema;
 import com.vividsolutions.jump.workbench.ui.MultiInputDialog;
@@ -42,6 +43,7 @@ import javax.swing.JScrollPane;
 public class AttributeChooser {
 
     private final FeatureSchema schema;
+    private final I18N i18n = I18N.getInstance("fr.michaelm.jump.drivers.csv");
     
     public AttributeChooser(FeatureSchema schema) {
         this.schema = schema;
@@ -53,7 +55,7 @@ public class AttributeChooser {
      */
     public List<String> getSelectedAttributes() {
         final MultiInputDialog dialog = 
-            new MultiInputDialog(null, I18NPlug.getI18N("drivers.csv.select-attributes"), true);
+            new MultiInputDialog(null, i18n.get("drivers.csv.select-attributes"), true);
         dialog.setCancelVisible(false);
         // Workaround to install a JScrollPane in the MultiInputDialog
         JPanel panel = new JPanel(new GridBagLayout());
@@ -64,7 +66,7 @@ public class AttributeChooser {
         dialog.setCurrentPanel(panel);
         
         //JCheckBox[] jcbs = new JCheckBox[schema.getAttributeCount()];
-        dialog.addButton(I18NPlug.getI18N("drivers.csv.invert-selection")).addActionListener(e -> {
+        dialog.addButton(i18n.get("drivers.csv.invert-selection")).addActionListener(e -> {
             dialog.getCheckBox("X").setSelected(!dialog.getBoolean("X"));
             dialog.getCheckBox("Y").setSelected(!dialog.getBoolean("Y"));
             dialog.getCheckBox("Z").setSelected(!dialog.getBoolean("Z"));

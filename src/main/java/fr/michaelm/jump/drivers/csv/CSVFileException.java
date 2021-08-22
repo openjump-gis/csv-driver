@@ -19,11 +19,15 @@
 
 package fr.michaelm.jump.drivers.csv;
 
+import com.vividsolutions.jump.I18N;
+
 public class CSVFileException extends Exception {
+
+    private static final I18N i18n = I18N.getInstance("fr.michaelm.jump.drivers.csv");
     
-    public static final String DRIVER_NOT_CONFIGURED = I18NPlug.getI18N("drivers.csv.driver-not-fully-configured");
-    public static final String ERROR_READING = I18NPlug.getI18N("drivers.csv.error-reading");
-    public static final String NO_DATA_FOUND = I18NPlug.getI18N("drivers.csv.no-data-found");
+    public static final String DRIVER_NOT_CONFIGURED = i18n.get("drivers.csv.driver-not-fully-configured");
+    public static final String ERROR_READING = i18n.get("drivers.csv.error-reading");
+    public static final String NO_DATA_FOUND = i18n.get("drivers.csv.no-data-found");
 
     public CSVFileException(String message) {
         super(message);
